@@ -709,6 +709,10 @@ input::-webkit-inner-spin-button {
 		line-height: 140%;
 		text-align: justify;
 	}
+
+	.blog-form .form-container {
+		width: 85%;
+	}
 }
 
 
