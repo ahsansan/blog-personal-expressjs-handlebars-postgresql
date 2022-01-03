@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog Post List</title>
+    <link rel="stylesheet" href="public/style/style.css" />
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav>
+			<div class="logo">
+				<img src="public/images/logo-kecil.png" style="height: 33px;">
+        <h4>Ahsan</h4>
+			</div>
+			<div class="right">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/blog" class="list-active">Blog</a></li>
+					<li><a href="/contact-form">Contant Me</a></li>
+				</ul>
+        {{#if isLogin}}
+        <ul>
+					<li><span style="color: #888;">Selamat datang, {{user.name}}</span></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+        {{else}}
+        <ul>
+					<li><a href="/register">Register</a></li>
+					<li><a href="/login">Login</a></li>
+				</ul>
+        {{/if}}
+				<div class="menu-toggle">
+					<input type="checkbox" name="">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+    <!-- Blog -->
+    <!-- Form -->
+    {{#if messages.success}}
+<div class="alert alert-success" role="alert">
+  <center>{{messages.success}}</center>
+</div>
+    {{/if}}
+  <div class="login-mobile">
+    {{#if isLogin}}
+    <center>
+      <span style="color: #888;">Selamat datang, {{user.name}}</span>
+      <a href="/logout" class="button-blog">Logout</a>
+      {{else}}
+      <a href="/register" class="button-blog">Register</a>
+      <a href="/login" class="button-blog">Login</a>
+    </center>
+    {{/if}}
+  </div>
+    <div class="blog">
+      {{#if isLogin}}
+      <div class="button-blog-container">
+        <a href="/add-blog" class="button-blog">Add New Blog</a>
+      </div>
+      {{/if}}
+<!--       <hr class="line" /> -->
+      <div id="contents" class="blog-list">
+        <!-- dynamic content would be here -->
+        {{#each blogs}}
+        <div class="blog-list-item">
+          <div class="blog-image">
+            <img src="{{this.image}}" alt="" />
+          </div>
+          <div class="blog-content">
+            {{#if this.isLogin}}
+            <div class="btn-group">
+              <a class="btn-edit" href="/update-blog/{{this.id}}">Edit Post</a>
+              <a class="btn-delete" href="/delete-blog/{{this.id}}">Delete Blog</a>
+            </div>
+            {{/if}}
+            <div class="content-group">
+            <h1>
+            <a href="/blog-detail/{{this.id}}"
+            >{{this.title}}</a
+            >
+            </h1>
+            <div class="detail-blog-content">
+              {{this.post_at}} | {{this.author}}
+            </div>
+            <p>
+              {{this.content}}
+            </p>
+            <div style="text-align: right; font-size: 13px; color: grey; font-style: italic;">
+              {{this.post_age}}
+            </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+   <footer>
+		<i>Copyright © 2021 | <a href="/" style="text-decoration: none;color:#000">Muhammad Maulana Ahsan</a></i>
+	</footer>
+	<script src="public/script/script.js"></script>
+  </body>
+</html>

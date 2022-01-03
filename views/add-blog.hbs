@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creating Blog Page</title>
+    <link rel="stylesheet" href="public/style/style.css" />
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav>
+			<div class="logo">
+				<img src="public/images/logo-kecil.png" style="height: 33px;">
+        <h4>Ahsan</h4>
+			</div>
+			<div class="right">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/blog">Blog</a></li>
+					<li><a href="/contact-form">Contant Me</a></li>
+				</ul>
+        {{#if isLogin}}
+        <ul>
+					<li><span style="color: #888;">Selamat datang, {{user.name}}</span></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+        {{else}}
+        <ul>
+					<li><a href="/register">Register</a></li>
+					<li><a href="/login">Login</a></li>
+				</ul>
+        {{/if}}
+				<div class="menu-toggle">
+					<input type="checkbox" name="">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+    <!-- Blog -->
+    <!-- Form -->
+    <div class="blog">
+      <div class="blog-form">
+        <div class="form-container">
+          <form action="/blog" method="POST" enctype="multipart/form-data">
+            <h1>Create Post Blog</h1>
+            <div>
+              <label for="input-blog-title">Title</label>
+              <input id="input-blog-title" name="title" />
+            </div>
+            <div>
+              <label for="input-blog-content">Content</label>
+              <textarea id="input-blog-content" name="content" class="textarea-blog"></textarea>
+            </div>
+            <div>
+              <label>Upload Image</label>
+              <div class="input-blog-image-group">
+                <label for="input-blog-image">
+                  <p>Attach File</p>
+                  <img src="public/images/file.png" alt="file" />
+                </label>
+                <input type="file" id="input-blog-image" name="image" />
+              </div>
+            </div>
+            <div class="button-group">
+              <button>Post Blog</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+		<i>Copyright © 2021 | <a href="/" style="text-decoration: none;color:#000">Muhammad Maulana Ahsan</a></i>
+	</footer>
+	<script src="public/script/script.js"></script>
+</body>
+</html>
